@@ -14,7 +14,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body onload="Launcher()">
 
 <div class="container-fluid">
     <div class="row">
@@ -84,41 +84,9 @@
           </div>
 
 <div id="widget" class="mt-3">
-
-
-
-
-<!--              <div class="card mb-3">-->
-<!--                  <div class="row no-gutters">-->
-<!--                      <div class="col-xs-12 col-sm-12 col-md-4">-->
-<!--                          <div class="rounder"></div>-->
-<!---->
-<!--                          <img src="img.jpg" class="card-img" alt="...">-->
-<!---->
-<!--                      </div>-->
-<!--                      <div class="col-xs-12 col-sm-12 col-md-8">-->
-<!--                          <div class="floater"></div>-->
-<!--                          <div class="card-body">-->
-<!--                              <h5 class="card-title name">Shalom Chioma</h5>-->
-<!--                              <p class="card-text address">9278 new road, kilcoole, waterford</p>-->
-<!--                              <p class="card-text">-->
-<!--                              <div class="contact d-flex justify-content-left">-->
-<!--                                  <li><i class="far fa-envelope"></i>brad.gibson@example.com</li>-->
-<!--                                  <li><i class="fas fa-phone"></i>011-962-7516</li>-->
-<!---->
-<!--                                  <li>-->
-<!--                                      <div class="oneer">-->
-<!--                                      <i class="fas fa-arrow-right"></i>-->
-<!--                                      </div>-->
-<!--                                  </li>-->
-<!--                          </div>-->
-<!--                              </p>-->
-<!--                          </div>-->
-<!--                      </div>-->
-<!--                  </div>-->
-<!--              </div>-->
-
-
+<input type="text" name="Tagger" hidden id="Ftag">
+<input type="text" name="Tagger" hidden id="Atag">
+<input type="text" name="Tagger" hidden id="tag">
 
 
 
@@ -134,7 +102,7 @@
 
 <div class="footer mt-4">
     <div class="footers d-flex justify-content-left">
-        <li><button class="btn btn-success download"><i class="fas fa-cloud-download-alt"></i>  &nbsp;&nbsp;&nbsp; Download results</button></li>
+        <li><button class="btn btn-success download" id="download"><i class="fas fa-cloud-download-alt"></i>  &nbsp;&nbsp;&nbsp; Download results</button></li>
 
         <div class="paginate d-flex justify-content-center">
         <li><button class="btn  prev" id="prev"><i class="fas fa-chevron-left text-white"></i></button></li>
