@@ -123,7 +123,7 @@ function display(a){
                 "<li><i class='fas fa-phone'></i>"+a[key].phone+"</li>\n"+
                 "<li>\n"+
                 "<div class='oneer'>\n" +
-                "<span hidden>"+a[key].email+"</span>\n"+
+                "<span hidden>"+a[key].login.uuid+"</span>\n"+
                 "    <i class='fas fa-arrow-right' id='oneer'></i>\n" +
                 "    </div>\n"+
             "  </li>\n" +
@@ -529,95 +529,95 @@ $(document).ready(function () {
 
 //
 //                 //individual record
-//                 $("#widget").on('click','#oneer',function(e){
-//                     let seed=data.info.seed;
-//                     let pageIndex=data.info.page;
-//                     var myArray=data.results;
-//                     let display_block=$(this).prev().text();
-//                     console.log(display_block);
-//                     console.log(pageIndex);
-//                     console.log(seed);
-//                     // $("#widget").text(" ");
-//                     // $("#widget").html(display_block);
-//
-//                     $.ajax({
-//
-//                         url: 'https://randomuser.me/api/?results=3&gender=female&page='+pageIndex+'&seed='+seed,//reduced result due to band with restrictions from API Server
-//                         dataType: 'json',
-//                         success:function (data4) {
-//
-//                             console.log(data4);
-//                             var myArray=data4.results;
-//                             var result = $.grep(myArray, function(e){ return e.email=== display_block; }); //Louane or Julia or Milan these names exist in this seed
-//                             console.log(result);
-//                             if(result.length!==0){
-//                                 $("#widget").addClass("no-display");
-//                                 $("#widget1").removeClass("no-display").addClass("display");
-//                                 // display(result);
-//                                 let a=result;
-//                                 let SingleOutput='';
-//
-//                                 for (var key in a) {
-//                                     SingleOutput +="<div class='card mb-3'>\n" +
-//                                         "    <div class='row no-gutters'>\n" +
-//                                         "    <div class='col-xs-12 col-sm-12 col-md-4'>\n" +
-//                                         "    <div class='rounder'></div>";
-//
-//                                     if (a.hasOwnProperty(key)) {
-//
-// //picture
-//                                         let pictureData = a[key].picture;
-//
-//                                         let nameData = a[key].name;
-//
-//                                         let locationData = a[key].location;
-//                                         let streetData = locationData.street;
-//                                         let registered=a[key].registered;
-//                                         let dob=a[key].dob.age;
-//                                         SingleOutput +=
-//                                             '                                <img src="'+pictureData.large+'" class="card-img" alt="...">\n' +
-//                                             '\n' +
-//                                             '                            </div>\n' +
-//                                             '                            <div class="col-xs-12 col-sm-12 col-md-8">\n' +
-//                                             '                                <div class="floater"></div>\n' +
-//                                             '                                <div class="card-body">\n' +
-//                                             '                                    <h5 class="card-title name">'+nameData.title+" "+nameData.first+" "+nameData.last+'</h5><h3>'+dob+'</h3>\n' +
-//                                             '                                    <p class="card-text address">'+locationData.street.number + +" "+locationData.street.name+" "+locationData.city+" "+locationData.state+'</p>\n' +
-//                                             '                                    <p class="card-text">\n' +
-//                                             '                                    <div class="contact justify-content-left">\n' +
-//                                             '                                        <li class="mb-3"><div class="ELighter"><i class="far fa-envelope mt-3"></i>&nbsp;&nbsp;'+a[key].email+'</div></li>\n' +
-//                                             '                                    <li class="mb-3"><div class="JLighter"><i class="fas fa-sign-in-alt mt-3"></i>&nbsp;&nbsp;JOINED:'+registered.date.substring(0,10)+'</div></li>\n' +
-//                                             '                                        <li class="mb-3"><i class="fas fa-phone"></i>&nbsp;&nbsp;'+a[key].phone+'</li>\n' +
-//                                             '                                        <li class="mb-3"><i class="fas fa-mobile-alt"></i>&nbsp;&nbsp;'+a[key].cell+'</li>\n' +
-//                                             '\n' +
-//                                             '                                    </div>\n' +
-//                                             '                                    </p>\n' +
-//                                             '                                </div>';
-//                                     }
-//                                     SingleOutput += "    </div>\n" +
-//                                         "    </div>\n" +
-//                                         "    </div>";
-//                                 }
-//                                 info1.insertAdjacentHTML('beforeend',SingleOutput);
-//
-//
-//
-//
-//                                 $("#prev").prop('disabled', true);
-//                                 $("#next").prop('disabled', true);
-//                                 $(".download").prop('disabled', true);
-//                             }
-//                             else{
-//                                 $("#widget").html(" ");
-//
-//                                 errorMessage("can't find a matching first name");
-//
-//                             }
-//
-//
-//                         }
-//                     })
-//                 });
+                $("#widget").on('click','#oneer',function(e){
+                    let seed=data.info.seed;
+                    let pageIndex=data.info.page;
+                    var myArray=data.results;
+                    let display_block=$(this).prev().text();
+                    console.log(display_block);
+                    console.log(pageIndex);
+                    console.log(seed);
+                    // $("#widget").text(" ");
+                    // $("#widget").html(display_block);
+
+                    $.ajax({
+
+                        url: 'https://randomuser.me/api/?results=100&page='+pageIndex+'&seed='+seed,//reduced result due to band with restrictions from API Server
+                        dataType: 'json',
+                        success:function (data4) {
+
+                            console.log(data4);
+                            var myArray=data4.results;
+                            var result = $.grep(myArray, function(e){ return e.login.uuid=== display_block; }); //Louane or Julia or Milan these names exist in this seed
+                            console.log(result);
+                            if(result.length!==0){
+                                $("#widget").addClass("no-display");
+                                $("#widget1").removeClass("no-display").addClass("display");
+                                // display(result);
+                                let a=result;
+                                let SingleOutput='';
+
+                                for (var key in a) {
+                                    SingleOutput +="<div class='card mb-3'>\n" +
+                                        "    <div class='row no-gutters'>\n" +
+                                        "    <div class='col-xs-12 col-sm-12 col-md-4'>\n" +
+                                        "    <div class='rounder'></div>";
+
+                                    if (a.hasOwnProperty(key)) {
+
+//picture
+                                        let pictureData = a[key].picture;
+
+                                        let nameData = a[key].name;
+
+                                        let locationData = a[key].location;
+                                        let streetData = locationData.street;
+                                        let registered=a[key].registered;
+                                        let dob=a[key].dob.age;
+                                        SingleOutput +=
+                                            '                                <img src="'+pictureData.large+'" class="card-img" alt="...">\n' +
+                                            '\n' +
+                                            '                            </div>\n' +
+                                            '                            <div class="col-xs-12 col-sm-12 col-md-8">\n' +
+                                            '                                <div class="floater"></div>\n' +
+                                            '                                <div class="card-body">\n' +
+                                            '                                    <h5 class="card-title name">'+nameData.title+" "+nameData.first+" "+nameData.last+'</h5><h3>'+dob+'</h3>\n' +
+                                            '                                    <p class="card-text address">'+locationData.street.number + +" "+locationData.street.name+" "+locationData.city+" "+locationData.state+'</p>\n' +
+                                            '                                    <p class="card-text">\n' +
+                                            '                                    <div class="contact justify-content-left">\n' +
+                                            '                                        <li class="mb-3"><div class="ELighter"><i class="far fa-envelope mt-3"></i>&nbsp;&nbsp;'+a[key].email+'</div></li>\n' +
+                                            '                                    <li class="mb-3"><div class="JLighter"><i class="fas fa-sign-in-alt mt-3"></i>&nbsp;&nbsp;JOINED:'+registered.date.substring(0,10)+'</div></li>\n' +
+                                            '                                        <li class="mb-3"><i class="fas fa-phone"></i>&nbsp;&nbsp;'+a[key].phone+'</li>\n' +
+                                            '                                        <li class="mb-3"><i class="fas fa-mobile-alt"></i>&nbsp;&nbsp;'+a[key].cell+'</li>\n' +
+                                            '\n' +
+                                            '                                    </div>\n' +
+                                            '                                    </p>\n' +
+                                            '                                </div>';
+                                    }
+                                    SingleOutput += "    </div>\n" +
+                                        "    </div>\n" +
+                                        "    </div>";
+                                }
+                                info1.insertAdjacentHTML('beforeend',SingleOutput);
+
+
+
+
+                                $("#prev").prop('disabled', true);
+                                $("#next").prop('disabled', true);
+                                $(".download").prop('disabled', true);
+                            }
+                            else{
+                                $("#widget").html(" ");
+
+                                errorMessage("can't find a matching first name");
+
+                            }
+
+
+                        }
+                    })
+                });
 
             },
             error: function(err) {
@@ -641,17 +641,17 @@ $(".return").click(function () {
 
 
     //individual record
-    $("#widget").on('click','#oneer',function(e){
-        let display_block=$(this).offsetParent();
-        console.log(display_block);
-        $("#widget").html(" ");
-        $("#widget").html(display_block);
-        $(".Ausers").removeClass("display").addClass("no-display");
-        $(".Musers").removeClass("display").addClass("no-display");
-        $(".Fusers").removeClass("display").addClass("no-display");
-        $(".Ulist").removeClass("no-display").addClass("display");
-
-    });
+    // $("#widget").on('click','#oneer',function(e){
+    //     let display_block=$(this).offsetParent();
+    //     console.log(display_block);
+    //     // $("#widget").html(" ");
+    //     // $("#widget2").html(display_block);
+    //     $(".Ausers").removeClass("display").addClass("no-display");
+    //     $(".Musers").removeClass("display").addClass("no-display");
+    //     $(".Fusers").removeClass("display").addClass("no-display");
+    //     $(".Ulist").removeClass("no-display").addClass("display");
+    //
+    // });
 
 
     //search Record
