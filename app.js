@@ -1,5 +1,7 @@
 
 var info=document.getElementById("widget");
+var info1=document.getElementById("widget1");
+var contact=document.getElementsByClassName("contact");
 let Nxtval=$("#next2").val();
 let Nxtvali=parseInt(Nxtval);
 
@@ -98,46 +100,28 @@ function display(a){
 
 //picture
             let pictureData = a[key].picture;
-            // output +="<img src='"+pictureData.large+"'>";
-            output +=" <img src='"+pictureData.large+"' class='card-img' alt='...'>";
-            output +="</div>";
-            output +="<div class='col-xs-12 col-sm-12 col-md-8'>\n" +
-                "    <div class='floater'></div>\n" +
-                "    <div class='card-body'>";
 
-//name
             let nameData = a[key].name;
-            // output += nameData.title + '.' + ' ' + nameData.first + ' ' + nameData.last;
-            output +="<h5 class='card-title name'>"+nameData.title + '.' + ' ' + nameData.first + ' ' + nameData.last+"</h5>";
-            // console.log(nameData.title+'.'+ ' '+nameData.first+ ' ' + nameData.last);
 
-
-//location
             let locationData = a[key].location;
             let streetData = locationData.street;
-            // output += locationData.street.number + ' ' + locationData.street.name + ',' + ' ' + locationData.city + ',' + ' ' + locationData.state;
-            output += "<p class='card-text address'>"+locationData.street.number + ' ' + locationData.street.name + ',' + ' ' + locationData.city + ',' + ' ' + locationData.state+"</p>";
-            // console.log(locationData.street.number+ ' ' + locationData.street.name + ','+ ' ' + locationData.city+','+ ' ' +locationData.state);
 
-
-//email
-//             output += a[key].email;
-            output += "<p class='card-text'>\n" +
+            output +=
+                "<img src='"+pictureData.large+"' class='card-img' alt='...'>\n"+
+                "</div>\n"+
+                "<div class='col-xs-12 col-sm-12 col-md-8'>\n" +
+                "    <div class='floater'></div>\n" +
+                "    <div class='card-body'>\n"+
+                "<h5 class='card-title name'>"+nameData.title + '.' + ' ' + nameData.first + ' ' + nameData.last+"</h5>\n"+
+                "<p class='card-text address'>"+locationData.street.number + ' ' + locationData.street.name + ',' + ' ' + locationData.city + ',' + ' ' + locationData.state+"</p>\n"+
+                "<p class='card-text'>\n" +
                 "    <div class='contact d-flex justify-content-left'>\n" +
                 "    <li><i class='far fa-envelope'></i>"+a[key].email+"</li>\n" +
-                "<li><i class='fas fa-phone'></i>"+a[key].phone+"</li>\n";
-            // console.log(data.as[key].email);
-
-
-//phone
-//             output += a[key].phone;
-            // console.log(data.as[key].phone);
-
-            //cell
-            // output += a[key].cell;
-            output +="<li>\n"+
+                "<li><i class='fas fa-phone'></i>"+a[key].phone+"</li>\n"+
+                "<li>\n"+
                 "<div class='oneer'>\n" +
-                "    <i class='fas fa-arrow-right'></i>\n" +
+                "<span hidden>"+a[key].login.uuid+"</span>\n"+
+                "    <i class='fas fa-arrow-right' id='oneer'></i>\n" +
                 "    </div>\n"+
             "  </li>\n" +
             "    </div>\n" +
@@ -150,9 +134,7 @@ function display(a){
             "    </div>";
     }
 
-// }
-//             console.log(output);
-//           output +='';
+
 
     return  info.insertAdjacentHTML('beforeend',output);
 }
@@ -226,7 +208,7 @@ $(document).ready(function () {
 
         $.ajax({
 
-            url: 'https://randomuser.me/api/?page=1&results=3&gender=male',
+            url: 'https://randomuser.me/api/?page=1&results=3&gender=male&seed=abc',
 
             dataType: 'json',
             success: function(data) {
@@ -262,14 +244,14 @@ $(document).ready(function () {
 
 
 
-    //Get all Male records
+    //Get all FeMale records
     $(".female").click(function (e) {
         e.preventDefault();
         // let result=$("#result");
 
         $.ajax({
 
-            url: 'https://randomuser.me/api/?page=1&results=3&gender=female',
+            url: 'https://randomuser.me/api/?page=1&results=3&gender=female&seed=abc',
 
             dataType: 'json',
             success: function(data) {
@@ -435,16 +417,125 @@ $(document).ready(function () {
     //     // }
     // })
 
-
+$(".return").click(function () {
+    $("#widget1").removeClass("display").addClass("no-display");
+    $("#widget").removeClass("no-display").addClass("display");
+})
 
 
     //individual record
-    $("#result").on('click','#oneer',function(e){
-        let display_block=$(this).parent().html();
+    $("#widget").on('click','#oneer',function(e){
+        let display_block=$(this).prev().text();
         console.log(display_block);
-        $("#result").text(" ");
-        $("#result").text(display_block);
+        // $("#widget").text(" ");
+        // $("#widget").html(display_block);
 
+        $.ajax({
+
+            url: 'https://randomuser.me/api/?results=100&seed=abc',//reduced result due to band with restrictions from API Server
+            dataType: 'json',
+            success:function (data) {
+
+
+                var myArray=data.results;
+                var result = $.grep(myArray, function(e){ return e.login.uuid=== display_block; }); //Louane or Julia or Milan these names exist in this seed
+console.log(result);
+                if(result.length!==0){
+                        $("#widget").addClass("no-display");
+                        $("#widget1").removeClass("no-display").addClass("display");
+                        // display(result);
+                    let a=result;
+let SingleOutput='';
+
+                    for (var key in a) {
+                        SingleOutput +="<div class='card mb-3'>\n" +
+                            "    <div class='row no-gutters'>\n" +
+                            "    <div class='col-xs-12 col-sm-12 col-md-4'>\n" +
+                            "    <div class='rounder'></div>";
+
+                        if (a.hasOwnProperty(key)) {
+
+//picture
+                            let pictureData = a[key].picture;
+
+                            let nameData = a[key].name;
+
+                            let locationData = a[key].location;
+                            let streetData = locationData.street;
+let registered=a[key].registered;
+let dob=a[key].dob.age;
+                            SingleOutput +=
+    '                                <img src="'+pictureData.large+'" class="card-img" alt="...">\n' +
+    '\n' +
+    '                            </div>\n' +
+    '                            <div class="col-xs-12 col-sm-12 col-md-8">\n' +
+    '                                <div class="floater"></div>\n' +
+    '                                <div class="card-body">\n' +
+    '                                    <h5 class="card-title name">'+nameData.title+" "+nameData.first+" "+nameData.last+'</h5><h3>'+dob+'</h3>\n' +
+    '                                    <p class="card-text address">'+locationData.street.number + +" "+locationData.street.name+" "+locationData.city+" "+locationData.state+'</p>\n' +
+    '                                    <p class="card-text">\n' +
+    '                                    <div class="contact justify-content-left">\n' +
+    '                                        <li class="mb-3"><div class="ELighter"><i class="far fa-envelope mt-3"></i>&nbsp;&nbsp;'+a[key].email+'</div></li>\n' +
+    '                                    <li class="mb-3"><div class="JLighter"><i class="fas fa-sign-in-alt mt-3"></i>&nbsp;&nbsp;JOINED:'+registered.date.substring(0,10)+'</div></li>\n' +
+    '                                        <li class="mb-3"><i class="fas fa-phone"></i>&nbsp;&nbsp;'+a[key].phone+'</li>\n' +
+    '                                        <li class="mb-3"><i class="fas fa-mobile-alt"></i>&nbsp;&nbsp;'+a[key].cell+'</li>\n' +
+    '\n' +
+    '                                    </div>\n' +
+    '                                    </p>\n' +
+    '                                </div>';
+                   }
+                            SingleOutput += "    </div>\n" +
+                                "    </div>\n" +
+                                "    </div>";
+                        }
+                    info1.insertAdjacentHTML('beforeend',SingleOutput);
+
+
+
+
+                        $("#prev").prop('disabled', true);
+                        $("#next").prop('disabled', true);
+                        $(".download").prop('disabled', true);
+                }
+                else{
+                    $("#widget").html(" ");
+
+                    errorMessage("can't find a matching first name");
+
+                }
+
+
+
+                var headers = {
+                    name: 'Name'.replace(/,/g, ''), // remove commas to avoid errors
+                    location: "Address",
+                    email: "Email",
+                    phone: "Phone",
+                    cell: "Cell"
+                };
+                var itemsFormatted = [];
+
+                // format the data
+                result.forEach((item) => {
+                    itemsFormatted.push({
+                        name: item.name.title+ "." + " "+item.name.first +" " +item.name.last, // remove commas to avoid errors,
+                        location: item.location.street.number + ' ' + item.location.street.name + ' ' + item.location.city + ' ' + item.location.state,
+                        email: item.email,
+                        phone: item.phone,
+                        cell: item.cell
+
+                    });
+                });
+
+                var fileTitle = 'orders'; // or 'my-unique-title'
+                $("#download").click(function (e) {
+                    e.preventDefault();
+
+                    exportCSVFile(headers,itemsFormatted, fileTitle); // call the exportCSVFile() function to process the JSON and trigger the download
+                })
+
+            }
+        })
     });
 
 
@@ -459,13 +550,13 @@ $(document).ready(function () {
 
         $.ajax({
 
-            url: 'https://randomuser.me/api/?results=100',
+            url: 'https://randomuser.me/api/?results=100&seed=abc',//reduced result due to band with restrictions from API Server
             dataType: 'json',
             success:function (data) {
 
 
                 var myArray=data.results;
-                var result = $.grep(myArray, function(e){ return e.name.first.toLowerCase() === pos; }); //Louane
+                var result = $.grep(myArray, function(e){ return e.name.first.toLowerCase() === pos; }); //Louane or Julia or Milan these names exist in this seed
 
                 if(result.length!==0){
                     if(result.length===1) {

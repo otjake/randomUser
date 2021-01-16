@@ -260,9 +260,7 @@ input:checked + .slider:before {
 }
 /*slider*/
 
-.widget{
-    /*display: none;*/
-}
+
 .card{
     border-radius: 18px!important;
     min-height: 197px;
@@ -330,6 +328,9 @@ input:checked + .slider:before {
     margin-left: 9px;
     font-size: 27px;
 }
+.oneer span{
+
+}
 .footers li{
     list-style-type: none;
 
@@ -358,17 +359,25 @@ input:checked + .slider:before {
 .next,.prev{
     font-size: 20px;
 }
-
-.widget1{
-   display: none;
+#widget{
+    z-index: 1;
 }
-.widget1 .card{
+.no-display{
+    display: none;
+}
+.display{
+    display: block;
+}
+/*#widget1{*/
+/*display: none;*/
+/*}*/
+#widget1 .card{
     min-height: 404px;
     box-shadow: none!important;
     background-color: #F7F7FF;
     border: none;
 }
-.widget1 .card-img {
+#widget1 .card-img {
     border-radius: 50% !important;
     width: 155px;
     height: 155px;
@@ -377,11 +386,11 @@ input:checked + .slider:before {
     left: 45px;
 }
 
-.widget1 h3{
+#widget1 h3{
     font-size: 21px;
 }
 
-.widget1 .rounder{
+#widget1 .rounder{
     position: relative;
     width: 162px;
     height: 162px;
@@ -390,7 +399,7 @@ input:checked + .slider:before {
     left: 42px;
     border-radius: 50%;
 }
-.widget1 .card li{
+#widget1 .card li{
     font-size: 18px;
 }
 

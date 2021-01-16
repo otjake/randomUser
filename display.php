@@ -121,40 +121,8 @@
 
 </div>
 
-                <div class="widget1 mt-3">
-
-                    <h3><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;Return</h3>
-                    <div class="card mb-3">
-                        <div class="row no-gutters">
-                            <div class="col-xs-12 col-sm-12 col-md-4">
-                                <div class="rounder"></div>
-
-                                <img src="img.jpg" class="card-img" alt="...">
-
-                            </div>
-                            <div class="col-xs-12 col-sm-12 col-md-8">
-                                <div class="floater"></div>
-                                <div class="card-body">
-                                    <h5 class="card-title name">Shalom Chioma</h5>
-                                    <p class="card-text address">9278 new road, kilcoole, waterford</p>
-                                    <p class="card-text">
-                                    <div class="contact justify-content-left">
-                                        <li class="mb-3"><div class="ELighter"><i class="far fa-envelope mt-3"></i>&nbsp;&nbsp;brad.gibson@example.com</div></li>
-                                    <li class="mb-3"><div class="JLighter"><i class="fas fa-sign-in-alt mt-3"></i>&nbsp;&nbsp;JOINED: 2002-05-21</div></li>
-                                        <li class="mb-3"><i class="fas fa-phone"></i>&nbsp;&nbsp;011-962-7516</li>
-                                        <li class="mb-3"><i class="fas fa-mobile-alt"></i>&nbsp;&nbsp;011-962-7516</li>
-
-<!--                                        <li>-->
-<!--                                            <div class="oneer">-->
-<!--                                                <i class="fas fa-arrow-right"></i>-->
-<!--                                            </div>-->
-<!--                                        </li>-->
-                                    </div>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div id="widget1" class="mt-3 no-display">
+                    <h3 class="return"><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;Return</h3>
 
 
                 </div>
