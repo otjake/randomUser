@@ -52,7 +52,11 @@
             <div class="result pb-3">
             <div class="result-holder">
           <div class="header">
-            <h2>All Users</h2>
+            <h2 class="Ausers">All Users</h2>
+            <h2 class="Musers no-display">Male Users</h2>
+            <h2 class="Fusers no-display">Female Users</h2>
+            <h2 class="Ulist no-display">User List</h2>
+
               <p>filter by</p>
 
               <div class="header-sect d-flex justify-content-left">
@@ -133,8 +137,11 @@
         <li><button class="btn btn-success download"><i class="fas fa-cloud-download-alt"></i>  &nbsp;&nbsp;&nbsp; Download results</button></li>
 
         <div class="paginate d-flex justify-content-center">
-        <li><button class="btn  next" id="next"><i class="fas fa-chevron-left text-white"></i></button></li>
-        <li><button class="btn  prev" id="prev"><i class="fas fa-chevron-right text-white"></i></button></li>
+        <li><button class="btn  prev" id="prev"><i class="fas fa-chevron-left text-white"></i></button></li>
+        <li><button class="btn  next" id="next"><i class="fas fa-chevron-right text-white"></i></button></li>
+            <label>
+                <input type="text" id="numholder" hidden value="1">
+            </label>
         </div>
     </div>
 </div>
