@@ -12,6 +12,7 @@ as well as event handling, CSS animation, and Ajax. It is free, open-source soft
 
 **How  should it be tested**
 1. Clone repo into your local system
+2. <a href="https://decagon01.herokuapp.com/">Link to site</a>
 
 **Note**
 <br>
