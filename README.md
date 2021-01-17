@@ -20,4 +20,5 @@ as well as event handling, CSS animation, and Ajax. It is free, open-source soft
 2.For individual user details UUID was used as search criteria but API Dosen't have any uniqiue forms of identification.<br>
 3.Country search was not implemented
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/be7878e09e8847a0bfbd8a7f2ed05e43)](https://app.codacy.com/gh/otjake/randomUser?utm_source=github.com&utm_medium=referral&utm_content=otjake/randomUser&utm_campaign=Badge_Grade)
 [![Android-master Actions Status](https://github.com/{otjake}/{randomUser}/edit/{Decagon}/badge.svg)](https://github.com/{otjake}/{randomUser}/actions)
