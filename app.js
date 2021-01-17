@@ -1235,7 +1235,7 @@ $(".return").click(function () {
             url: 'https://randomuser.me/api/?results=100&seed=abc',//reduced result due to band with restrictions from API Server
             dataType: 'json',
             success:function (data) {
-
+//j
 
                 var myArray=data.results;
                 var result = $.grep(myArray, function(e){ return e.name.first.toLowerCase() === pos; }); //Louane or Julia or Milan these names exist in this seed
