@@ -20,5 +20,4 @@ as well as event handling, CSS animation, and Ajax. It is free, open-source soft
 2.For individual user details UUID was used as search criteria but API Dosen't have any uniqiue forms of identification.<br>
 3.Country search was not implemented
 
-[![CircleCI](https://circleci.com/<gh>/<Decagon>/<Random User Fetch>.svg?style=svg&circle-token=< 3e397b052c10e7ae03149ef9a07d1eb6688ee5e9 
->)](<LINK>)
+[![YourActionName Actions Status](https://github.com/{otjake}/{randomUser}/edit/{Decagon}/badge.svg)](https://github.com/{otjake}/{randomUser}/actions)
