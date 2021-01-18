@@ -2,7 +2,6 @@
 var info=document.getElementById("widget");
 var info1=document.getElementById("widget1");
 var contact=document.getElementsByClassName("contact");
-// var tagger=document.getElementById("tag");
 let Nxtval=$("#numholder").val();
 let Nxtvali=parseInt(Nxtval);
 let Ftagger=$("#Ftag")
@@ -154,7 +153,6 @@ function paginate(myArray,seed, pageIndex) {
     let genderR="";
     if(result1.length!==0 && result2.length===0){
         genderR=result1[0].gender;
-
         URL='https://randomuser.me/api/?page=' + pageIndex + '&results=3&gender=female&seed='+seed;
     }else if(result1.length===0 && result2.length!==0){
         genderR=result2[0].gender;
@@ -236,7 +234,7 @@ function Launcher() {
                                 cell: "Cell"
                             };
 
-                            let itemsFormatted = formatter(result);
+                            let itemsFormatted = formatter(myArray);
 
 
                             var fileTitle = 'AllUsers'; // or 'my-unique-title'
@@ -293,7 +291,7 @@ function Launcher() {
                                 cell: "Cell"
                             };
 
-                            let itemsFormatted = formatter(result);
+                            let itemsFormatted = formatter(myArray);
 
 
                             var fileTitle = 'AllUsers'; // or 'my-unique-title'
@@ -434,15 +432,16 @@ $(document).ready(function () {
 
             dataType: 'json',
             success: function(data) {
+
+
+                // display function above
+                $("#widget").html(" ");
+                    display(data.results);
+
                 $(".Ausers").removeClass("no-display").addClass("display");
                 $(".Musers").removeClass("display").addClass("no-display");
                 $(".Fusers").removeClass("display").addClass("no-display");
                 $(".Ulist").removeClass("display").addClass("no-display");
-
-                // display function above
-                $("#widget").html(" ");
-
-                    display(data.results);
 
                 var headers = {
                     name: 'Name'.replace(/,/g, ''), // remove commas to avoid errors
@@ -492,7 +491,7 @@ $(document).ready(function () {
                                     cell: "Cell"
                                 };
 
-                                let itemsFormatted = formatter(result);
+                                let itemsFormatted = formatter(myArray);
 
 
                                 var fileTitle = 'AllUsers'; // or 'my-unique-title'
@@ -682,9 +681,9 @@ $(document).ready(function () {
     //Get all Male records
     $(".male").click(function (e) {
         e.preventDefault();
-        let Rand=Math.random();
+        let Rand="M"+Math.random();
         let ftagger=tagger.val(Rand);
-        // let result=$("#result");
+       console.log(ftagger.val());
 
         $.ajax({
 
@@ -696,8 +695,11 @@ $(document).ready(function () {
                 // display function above
                 $("#widget").html(" ");
                 display(data.results);
+                if(ftagger.val()==Rand){
+                    console.log(ftagger.val());
+                    console.log(Rand);
 
-                var headers = {
+                    var headers = {
                     name: 'Name'.replace(/,/g, ''), // remove commas to avoid errors
                     location: "Address",
                     email: "Email",
@@ -711,12 +713,11 @@ $(document).ready(function () {
                 var fileTitle = 'MaleUsers'; // or 'my-unique-title'
                 $(".download").click(function (e) {
                     e.preventDefault();
-                    console.log(tagger);
-                    if(tagger.val()==Rand){
-                        exportCSVFile(headers, itemsFormatted, fileTitle); // call the exportCSVFile() function to process the JSON and trigger the download
-                    }
-                })
 
+                        exportCSVFile(headers, itemsFormatted, fileTitle); // call the exportCSVFile() function to process the JSON and trigger the download
+
+                })
+            }
                 $(".Ausers").removeClass("display").addClass("no-display");
                 $(".Musers").removeClass("no-display").addClass("display");
                 $(".Fusers").removeClass("display").addClass("no-display");
@@ -934,8 +935,9 @@ $(document).ready(function () {
     //Get all feMale records
     $(".female").click(function (e) {
         e.preventDefault();
-        let Rand=Math.random();
-       let ftagger=Ftagger.val(Rand);
+        let Rand="F"+Math.random();
+       let Mtagger=Ftagger.val(Rand);
+        console.log(Mtagger.val());
 
         $.ajax({
 
@@ -956,27 +958,28 @@ $(document).ready(function () {
                 $("#widget").html(" ");
                 display(data.results);
 
+                if(Mtagger.val()==Rand) {
+                    console.log(Mtagger.val());
+                    console.log(Rand);
+                    var headers = {
+                        name: 'Name'.replace(/,/g, ''), // remove commas to avoid errors
+                        location: "Address",
+                        email: "Email",
+                        phone: "Phone",
+                        cell: "Cell"
+                    };
 
-                var headers = {
-                    name: 'Name'.replace(/,/g, ''), // remove commas to avoid errors
-                    location: "Address",
-                    email: "Email",
-                    phone: "Phone",
-                    cell: "Cell"
-                };
-
-                let itemsFormatted = formatter(data.results);
+                    let itemsFormatted = formatter(data.results);
 
 
-                var fileTitle = 'FemaleUsers'; // or 'my-unique-title'
-                $(".download").click(function (e) {
-                    e.preventDefault();
-                    console.log(Ftagger);
-                    if(Ftagger.val()==Rand){
-                    exportCSVFile(headers, itemsFormatted, fileTitle); // call the exportCSVFile() function to process the JSON and trigger the download
-                    }
-                })
+                    var fileTitle = 'FemaleUsers'; // or 'my-unique-title'
+                    $(".download").click(function (e) {
+                        e.preventDefault();
 
+                        exportCSVFile(headers, itemsFormatted, fileTitle); // call the exportCSVFile() function to process the JSON and trigger the download
+
+                    })
+                }
                 $("#next").click(function (e) {
                     e.preventDefault();
                     // Next(seed,page);
@@ -1172,6 +1175,7 @@ $(document).ready(function () {
 
 
 
+                                $(".return").removeClass("no-display").addClass("display");
                                 $("#prev").prop('disabled', true);
                                 $("#next").prop('disabled', true);
                                 $(".download").prop('disabled', true);
@@ -1201,6 +1205,8 @@ $(document).ready(function () {
 $(".return").click(function () {
     $("#widget1").removeClass("display").addClass("no-display");
     $("#widget").removeClass("no-display").addClass("display");
+    $(".return").removeClass("display").addClass("no-display");
+    $("#widget1").empty();
     $("#prev").prop('disabled', false);
     $("#next").prop('disabled', false);
     $(".download").prop('disabled', false);
@@ -1270,3 +1276,4 @@ $(".return").click(function () {
 
 
 
+// https://www.freecodecamp.org/news/here-is-the-most-popular-ways-to-make-an-http-request-in-javascript-954ce8c95aaa/
