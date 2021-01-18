@@ -336,20 +336,12 @@ function oneer(info,results) {
     let seed=info.seed;
     let pageIndex=Nxtvali;
     let display_block=document.getElementById("picker").innerText;
-                console.log(display_block);
-                console.log(pageIndex);
-                console.log(seed);
-    let URP;
-    if (seed === null) {
-        URP ='https://randomuser.me/api/?page=1&results=3&seed=123';
 
-    } else {
-        URP = 'https://randomuser.me/api/?results=3&page=' + pageIndex + '&seed=' + seed;
-    }
+
 
                 $.ajax({
 
-                    url: URP,//reduced result due to band with restrictions from API Server
+                    url: 'https://randomuser.me/api/?results=3&page=' + pageIndex + '&seed=' + seed,//reduced result due to band with restrictions from API Server
                     dataType: 'json',
                     success:function (data4) {
 
@@ -465,7 +457,7 @@ function Launcher() {
             console.log(resultData2);
             resultData=data.results;
 
-
+            $(".all").click();
         },
         error: function(err) {
             $("#widget").html(" ");
