@@ -120,27 +120,27 @@ function display(a){
                 // "<span hidden id='picker'>"+index+"</span>\n"+
                 "    <i class='fas fa-arrow-right ones1'  id='oneer'></i>\n" +
                 "    </div>\n"+
-            "  </li>\n" +
-            "    </div>\n" +
-            "    </p>\n" +
-            "    </div>\n";
+                "  </li>\n" +
+                "    </div>\n" +
+                "    </p>\n" +
+                "    </div>\n";
             // console.log(data.as[key].cell);
         }
         output += "    </div>\n" +
             "    </div>\n" +
             "    </div>";
     }
-output +='<div class="footer mt-4">\n' +
-    '    <div class="footers d-flex justify-content-left">\n' +
-    // '<input type="text" name="result" id="resultArray">\n'+
-    '        <li><button class="btn btn-success download"  id="download"><i class="fas fa-cloud-download-alt"></i>  &nbsp;&nbsp;&nbsp; Download results</button></li>\n' +
-    '\n' +
-    '        <div class="paginate d-flex justify-content-center">\n' +
-    '        <li><button class="btn  prev" id="prev"><i class="fas fa-chevron-left text-white"></i></button></li>\n' +
-    '        <li><button class="btn  next" id="next"><i class="fas fa-chevron-right text-white"></i></button></li>\n' +
-    '        </div>\n' +
-    '    </div>\n' +
-    '</div>';
+    output +='<div class="footer mt-4">\n' +
+        '    <div class="footers d-flex justify-content-left">\n' +
+        // '<input type="text" name="result" id="resultArray">\n'+
+        '        <li><button class="btn btn-success download"  id="download"><i class="fas fa-cloud-download-alt"></i>  &nbsp;&nbsp;&nbsp; Download results</button></li>\n' +
+        '\n' +
+        '        <div class="paginate d-flex justify-content-center">\n' +
+        '        <li><button class="btn  prev" id="prev"><i class="fas fa-chevron-left text-white"></i></button></li>\n' +
+        '        <li><button class="btn  next" id="next"><i class="fas fa-chevron-right text-white"></i></button></li>\n' +
+        '        </div>\n' +
+        '    </div>\n' +
+        '</div>';
 
 
     return  info.insertAdjacentHTML('beforeend',output);
@@ -174,9 +174,9 @@ function paginate(myArray,seed, pageIndex) {
     else{
         URL= 'https://randomuser.me/api/?page=1&results=&seed='+seed;
     }
-resultArray.push(URL);
-resultArray.push(genderR);
-return resultArray;
+    resultArray.push(URL);
+    resultArray.push(genderR);
+    return resultArray;
 }
 
 
@@ -475,12 +475,12 @@ $(document).ready(function () {
         };
         let itemsFormatted = formatter(resultData);
         var fileTitle = 'AllUsers'; // or 'my-unique-title'
-                exportCSVFile(headers, itemsFormatted, fileTitle); // call the exportCSVFile() function to process the JSON and trigger the download
+        exportCSVFile(headers, itemsFormatted, fileTitle); // call the exportCSVFile() function to process the JSON and trigger the download
     });
 
     //next
     $("#widget").on('click','.next',function(e) {
-            e.preventDefault();
+        e.preventDefault();
         next(resultData2,resultData);
     });
 
@@ -488,7 +488,7 @@ $(document).ready(function () {
 
     //Previous
     $("#widget").on('click','.prev',function(e) {
-            e.preventDefault();
+        e.preventDefault();
 
         prev(resultData2,resultData);
 
@@ -498,8 +498,8 @@ $(document).ready(function () {
     //Individual info
     $("#widget").on('click','.ones1',function(e){
         let test=$(this).prev().text();
-    oneer(resultData2,resultData,test);
-    $(".return").removeClass("no-display ").addClass("display");
+        oneer(resultData2,resultData,test);
+        $(".return").removeClass("no-display ").addClass("display");
 
     });
 
@@ -517,7 +517,7 @@ $(document).ready(function () {
 
                 // display function above
                 $("#widget").html(" ");
-                    display(data.results);
+                display(data.results);
 
                 $(".Ausers").removeClass("no-display").addClass("display");
                 $(".Musers").removeClass("display").addClass("no-display");
@@ -634,15 +634,15 @@ $(document).ready(function () {
     })
 
 
-$(".return").click(function () {
-    $("#widget1").removeClass("display").addClass("no-display");
-    $("#widget").removeClass("no-display").addClass("display");
-    $(".return").removeClass("display").addClass("no-display");
-    $("#widget1").empty();
-    $("#prev1").prop('disabled', false);
-    $("#next1").prop('disabled', false);
-    $(".download1").prop('disabled', false);
-})
+    $(".return").click(function () {
+        $("#widget1").removeClass("display").addClass("no-display");
+        $("#widget").removeClass("no-display").addClass("display");
+        $(".return").removeClass("display").addClass("no-display");
+        $("#widget1").empty();
+        $("#prev1").prop('disabled', false);
+        $("#next1").prop('disabled', false);
+        $(".download1").prop('disabled', false);
+    })
 
 
 
