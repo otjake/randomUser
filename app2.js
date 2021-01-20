@@ -83,11 +83,12 @@ function formatter(JsonFile) {
 
 //returns display widget
 function display(a){
+var d=-1;
 
     var output = " ";
 // for (i=0; i<data.results.length;i++){
     for (var key in a) {
-
+        d++
         output +="<div class='card mb-3'>\n" +
             "    <div class='row no-gutters'>\n" +
             "    <div class='col-xs-12 col-sm-12 col-md-4'>\n" +
@@ -109,16 +110,17 @@ function display(a){
                 "<div class='col-xs-12 col-sm-12 col-md-8'>\n" +
                 "    <div class='floater'></div>\n" +
                 "    <div class='card-body'>\n"+
-                "<h5 class='card-title name'>"+nameData.title + '.' + ' ' + nameData.first + ' ' + nameData.last+"</h5>\n"+
+                "<h5 class='card-title name'>"+nameData.title + '.' + ' ' + nameData.first + ' ' + nameData.last+d+"</h5>\n"+
                 "<p class='card-text address'>"+locationData.street.number + ' ' + locationData.street.name + ',' + ' ' + locationData.city + ',' + ' ' + locationData.state+"</p>\n"+
                 "<p class='card-text'>\n" +
                 "    <div class='contact d-flex justify-content-left'>\n" +
-                "    <li><i class='far fa-envelope'></i>"+a[key].email+"</li>\n" +
+                "    <li><i class='far fa-envelope' id='email'></i>"+a[key].email+"</li>\n" +
                 "<li><i class='fas fa-phone'></i>"+a[key].phone+"</li>\n"+
                 "<li>\n"+
                 "<div class='oneer'>\n" +
+
                 "<span hidden id='picker'>"+a[key].login.uuid+"</span>\n"+
-                "    <i class='fas fa-arrow-right' id='oneer'></i>\n" +
+                "    <i class='fas fa-arrow-right ones1'  id='oneer'></i>\n" +
                 "    </div>\n"+
             "  </li>\n" +
             "    </div>\n" +
@@ -202,7 +204,6 @@ function next(info,results) {
                     resultData="";
                     resultData2="";
 
-                    // console.log(resultData2.info.seed);
 
                     resultData2=info;
                     resultData=result;
@@ -331,12 +332,22 @@ function prev(info,results) {
 
 }
 
-function oneer(info,results) {
+function oneer(info,results,test) {
 
     let seed=info.seed;
     let pageIndex=Nxtvali;
-    let display_block=document.getElementById("picker").innerText;
+    // let display_block=document.getElementById("id").innerHTML;
 
+
+
+
+
+    // var indivdual = results.filter(myFunction);
+    // console.log(indivdual);
+    //
+    // function myFunction(value) {
+    //     return value === display_block;
+    //
 
 
                 $.ajax({
@@ -345,13 +356,11 @@ function oneer(info,results) {
                     dataType: 'json',
                     success:function (data4) {
 
-                        console.log(data4);
                         var myArray=data4.results;
                         var result = $.grep(myArray, function(e){
-                            console.log(e.login.uuid);
-                            return e.login.uuid==display_block;
+                            console.log(test);
+                            return e.login.uuid==test;
                         });
-                        console.log(result);
                         if(result.length!==0){
                             $("#widget").removeClass("display").addClass("no-display");
                             $("#widget1").removeClass("no-display").addClass("display");
@@ -431,7 +440,7 @@ let footer='\n' +
 
 
                     }
-                })
+               })
 }
 
 function Launcher() {
@@ -474,9 +483,7 @@ $(document).ready(function () {
 
     $("#widget").on('click','.download',function(e){
         let download=$(this);
-       console.log(download);
         let result= $(this).parent().prev().val();
-        console.log(result);
         var headers = {
             name: 'Name'.replace(/,/g, ''), // remove commas to avoid errors
             location: "Address",
@@ -517,9 +524,9 @@ $(document).ready(function () {
     });
 
 
-    $("#widget").on('click','.oneer',function(e){
-
-    oneer(resultData2,resultData);
+    $("#widget").on('click','.ones1',function(e){
+        let test=$(this).prev().text();
+    oneer(resultData2,resultData,test);
     $(".return").removeClass("no-display ").addClass("display");
 
     });
