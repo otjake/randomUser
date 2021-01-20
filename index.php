@@ -14,7 +14,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body onload="Launcher()">
 
 <div class="container-fluid">
     <div class="row">
@@ -31,6 +31,12 @@
 
                     <p class="sub my-5">Show Users</p>
 
+                    <label>
+                        <input type="text" hidden id="numholder"  value="1">
+                    </label>
+                    <label>
+                        <input type="text" hidden id="tag"  value="1">
+                    </label>
 
                     <div class="query-Buttons d-flex justify-content-left">
                             <li class="all"><i class="fas fa-users mt-3"></i></li>
@@ -50,7 +56,7 @@
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 
             <div class="result pb-3">
-            <div class="result-holder">
+            <div class="result-holder" id="result-holder">
           <div class="header">
             <h2 class="Ausers">All Users</h2>
             <h2 class="Musers no-display">Male Users</h2>
@@ -88,63 +94,29 @@
 
 
 
-<!--              <div class="card mb-3">-->
-<!--                  <div class="row no-gutters">-->
-<!--                      <div class="col-xs-12 col-sm-12 col-md-4">-->
-<!--                          <div class="rounder"></div>-->
-<!---->
-<!--                          <img src="img.jpg" class="card-img" alt="...">-->
-<!---->
-<!--                      </div>-->
-<!--                      <div class="col-xs-12 col-sm-12 col-md-8">-->
-<!--                          <div class="floater"></div>-->
-<!--                          <div class="card-body">-->
-<!--                              <h5 class="card-title name">Shalom Chioma</h5>-->
-<!--                              <p class="card-text address">9278 new road, kilcoole, waterford</p>-->
-<!--                              <p class="card-text">-->
-<!--                              <div class="contact d-flex justify-content-left">-->
-<!--                                  <li><i class="far fa-envelope"></i>brad.gibson@example.com</li>-->
-<!--                                  <li><i class="fas fa-phone"></i>011-962-7516</li>-->
-<!---->
-<!--                                  <li>-->
-<!--                                      <div class="oneer">-->
-<!--                                      <i class="fas fa-arrow-right"></i>-->
-<!--                                      </div>-->
-<!--                                  </li>-->
-<!--                          </div>-->
-<!--                              </p>-->
-<!--                          </div>-->
-<!--                      </div>-->
-<!--                  </div>-->
-<!--              </div>-->
-
-
-
-
-
 
 </div>
+                <h3 class="return no-display"><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;Return</h3>
 
                 <div id="widget1" class="mt-3 no-display">
-                    <h3 class="return"><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;Return</h3>
 
 
                 </div>
 
 
-<div class="footer mt-4">
-    <div class="footers d-flex justify-content-left">
-        <li><button class="btn btn-success download"><i class="fas fa-cloud-download-alt"></i>  &nbsp;&nbsp;&nbsp; Download results</button></li>
-
-        <div class="paginate d-flex justify-content-center">
-        <li><button class="btn  prev" id="prev"><i class="fas fa-chevron-left text-white"></i></button></li>
-        <li><button class="btn  next" id="next"><i class="fas fa-chevron-right text-white"></i></button></li>
-            <label>
-                <input type="text" id="numholder" hidden value="1">
-            </label>
-        </div>
-    </div>
-</div>
+<!--<div class="footer mt-4">-->
+<!--    <div class="footers d-flex justify-content-left">-->
+<!--        <li><button class="btn btn-success download" id="download"><i class="fas fa-cloud-download-alt"></i>  &nbsp;&nbsp;&nbsp; Download results</button></li>-->
+<!---->
+<!--        <div class="paginate d-flex justify-content-center">-->
+<!--        <li><button class="btn  prev" id="prev"><i class="fas fa-chevron-left text-white"></i></button></li>-->
+<!--        <li><button class="btn  next" id="next"><i class="fas fa-chevron-right text-white"></i></button></li>-->
+<!--            <label>-->
+<!--                <input type="text" id="numholder" hidden value="1">-->
+<!--            </label>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
         </div>
     </div>
     </div>
@@ -153,7 +125,7 @@
 <script src="jquery.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script></body>
-<script src="app.js"></script>
+<script src="app2.js"></script>
 
 </body>
 </html>
